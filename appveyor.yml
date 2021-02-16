@@ -6,6 +6,7 @@ environment:
 branches:
   only:
     - master
+    - test-force-result
 init:
   - cmd: SET PATH=C:\Program Files\Git\bin;%PATH%
 install:

@@ -141,8 +141,17 @@ public class AnvilEnchanter implements Listener {
 		result.setItemMeta(resultMeta);
 
 		event.setResult(result);
+
 		final int repairCost = cost;
+		final ItemStack input = base.clone();
+		final ItemStack input2 = addition.clone();
+
 		plugin.getServer().getScheduler().runTask(plugin, () -> {
+			if (!input.equals(inventory.getItem(0)) || !input2.equals(inventory.getItem(1))) {
+				return;
+			}
+
+			inventory.setItem(2, result);
 			inventory.setRepairCost(repairCost);
 			clicker.setWindowProperty(InventoryView.Property.REPAIR_COST, repairCost);
 		});
